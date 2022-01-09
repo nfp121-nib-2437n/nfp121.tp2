@@ -32,16 +32,17 @@ public class IHMFahrenheit extends JFrame implements ActionListener{
    */
   public void actionPerformed( ActionEvent ae ){
     try{
-      int fahrenheit = 0; // valeur est une String et doit être convertie en entier, voir java.lang.Integer méthode parseInt (--> try/catch)
-      float celsius = 0F; // à compléter, en appelant la méthode ad'hoc de la question2 
-      // un test ici pour le zéro absolu (-273.1)
-
-      sortie.setText( Float.toString( celsius));
+      sortie.setText( Float.toString(  fahrenheitEnCelsius(Integer.parseInt(entree.getText()))));
     }catch(NumberFormatException nfe){
       sortie.setText("error ! ");
     }
   }
-  
+   public static float fahrenheitEnCelsius( int f) throws NumberFormatException{
+         float celsius = (5F/9F) * (f-32);
+         float resultat=((int)(celsius*10))/10.0F;
+         if(resultat<-273.1F) resultat=-273.1F;
+        return resultat;
+     }
   
   public static void main(String[] args){
       new IHMFahrenheit();
